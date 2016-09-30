@@ -1,0 +1,29 @@
+package day4;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class methodseg1 
+{
+	public static void main(String[] args) 
+	{
+		String expurl="http://google.co.in";
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://google.com");
+		driver.manage().window().maximize();
+		
+		String acturl=driver.getCurrentUrl();
+		
+		System.out.println(acturl);
+		
+		if (acturl.contains(expurl))
+		{
+			System.out.println("Pass");
+		}
+		else
+		{
+			System.out.println("Fail");
+		}
+	}
+
+}

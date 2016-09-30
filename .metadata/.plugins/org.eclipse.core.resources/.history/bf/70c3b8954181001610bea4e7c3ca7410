@@ -1,0 +1,33 @@
+package testNG;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class gmailloginTest
+{
+	public WebDriver driver;
+	
+	@BeforeClass
+	public void gmail_Launch()
+	{
+		driver=new FirefoxDriver();
+		driver.get("http://gmail.com");
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();		
+		
+	}
+	@Test
+	public void gmail_Login()
+	{
+		driver.findElement(By.id("Email")).sendKeys("gan;desharath");
+		driver.findElement(By.id("next")).click();
+		driver.findElement(By.id("Passwd")).sendKeys("gandesharath");
+		driver.findElement(By.id("signIn")).click();
+	}
+
+}

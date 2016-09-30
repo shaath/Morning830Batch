@@ -1,0 +1,46 @@
+package testNG;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class gmailloginTest
+{
+	public WebDriver driver;
+	
+	@BeforeClass
+	public void gmail_Launch()
+	{
+		driver=new FirefoxDriver();
+		driver.get("http://gmail.com");
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();		
+		
+	}
+	@Test(priority=0)
+	public void gmail_Login()
+	{
+		driver.findElement(By.id("Email")).sendKeys("gandesharath");
+		driver.findElement(By.id("next")).click();
+		driver.findElement(By.id("Passwd")).sendKeys("gandesharath");
+		driver.findElement(By.id("signIn")).click();
+	}
+	@Test(priority=1)
+	public void compose_Mail()
+	{
+		System.out.println("This is compose mail code");
+	}
+	@AfterClass
+	public void gmail_Logout_Close()
+	{
+		driver.findElement(By.xpath(".//*[@id='gb']/div[1]/div[1]/div[2]/div[4]/div[1]/a/span")).click();
+		driver.findElement(By.id("gb_71")).click();
+		driver.close();tent
+	}
+
+}
